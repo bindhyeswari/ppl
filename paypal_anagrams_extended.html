@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        // function to check if a number is prime
+        function isPrime(num) {
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i < 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // generate a primes array
+        function generatePrimes(){
+            var arr = [2];
+            var num = 2;
+            while (arr.length < 27) {
+                num++;
+                if(isPrime(num)) arr.push(num);
+
+            }
+            return arr;
+        }
+
+        var primes = generatePrimes();
+
+        // create a hash code for the string
+        function generateHashCode(inp) {
+            var hash = 1;
+            for (var i = 0, len = inp.length; i < len; i++) {
+                hash *= primes[inp.charCodeAt(i) - 97]; // This operation for the entire string has a worst case complexity of O(n)
+                // If I sort, I will perform O(n^2) operations
+            }
+            return hash;
+        }
+
+        String.prototype.isAnagramOf = function (inp) {
+            if (this.length !== inp.length) return false;
+            console.log(generateHashCode(inp));
+            console.log(generateHashCode(this));
+            return generateHashCode(this) === generateHashCode(inp);
+        };
+
+        console.log('dddorz'.isAnagramOf('lapyap'));
+
+        // Failure case: 'ddorz'. The program can be made robust by using a different algorithm
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

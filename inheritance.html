@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // prototypal inheritance by using constructors
+        function Car() {}
+        Car.prototype.wheels = 4;
+        var car = new Car();
+        console.log(car.wheels);
+
+        // by using Object.create
+        var x = {
+            someprop: 32
+        };
+        var y = Object.create(x);
+        console.log(y.someprop);
+
+
+        // Both of them invoke the function with a context
+        // call takes the context and a list of comma separated parameters an input
+        // apply takes the context and an array (of the parameters) as an input
+
+
+        // Singleton Example
+        function Singleton() {
+            if ( typeof Singleton.instance === 'undefined' ) {
+                Singleton.instance = this;
+            }
+
+            return Singleton.instance;
+        }
+
+        var obj1 = new Singleton();
+        var obj2 = new Singleton();
+
+        console.log(obj1 === obj2);
+
+
+        // Object literal
+        var candidate = {
+            id: 'asdf258',
+            name: 'Hamid Hoseini'
+        };
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

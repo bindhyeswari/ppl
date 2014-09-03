@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        // create a hash code for the string
+        function generateHashCode(inp) {
+            var hash = 0;
+            for (var i = 0, len = inp.length; i < len; i++) {
+                hash += inp.charCodeAt(i); // This operation for the entire string has a worst case complexity of O(n)
+                // If I sort, I will perform O(n^2) operations
+            }
+            return hash;
+        }
+
+        String.prototype.isAnagramOf = function (inp) {
+            if (this.length !== inp.length) return false;
+            return generateHashCode(this) === generateHashCode(inp);
+        };
+
+        console.log('dddorz'.isAnagramOf('lapyap'));
+
+        // Failure case: 'ddorz'. The program can be made robust by using a different algorithm
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
